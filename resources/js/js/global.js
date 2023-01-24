@@ -52,7 +52,7 @@ function imageRemoveAndAppeared(image_type, $id){
          $('.grid-container').append(`
         <div class="grid-item"><div class="dz-preview dz-processing dz-image-preview dz-complete image_div">  
              <div class="dz-image">
-                 <img data-dz-thumbnail="" alt="er_model.png" src="${element.url}" style="width: 130px;">
+                 <img data-dz-thumbnail="" alt="" src="${element.url}" style="width: 130px;">
              </div>  
              <a class="dz-remove" href="" data-action="remove_image" data-id=${element.name}>Remove file</a>
          </div>

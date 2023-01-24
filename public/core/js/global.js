@@ -49,21 +49,26 @@ $('form').find( 'select, textarea, input' ).each(function(){
     }
 });
 function imageRemoveAndAppeared(image_type, $id, $label = '', $count = 1){
+    
     $('form').append(`
     <label>${$label}</label>
-    <div class="grid-container-${$count} d-flex">
+    <div class="grid-container-${$count} d-flex images-containers">
     </div>
     `)
     $.get($("meta[name='BASE_URL']").attr("content") + '/admin/' + image_type +'/' + $id, {}, function (response, status) {
         response.forEach(element => {
-         $(`.grid-container-${$count}`).append(`
-        <div class="grid-item"><div class="dz-preview dz-processing dz-image-preview dz-complete image_div">  
-             <div class="dz-image">
-                 <img data-dz-thumbnail="" alt="er_model.png" src="${element.url}" style="width: 130px;">
-             </div>  
-             <a class="dz-remove" href="" data-action="remove_image" data-id=${element.name}>Remove file</a>
-         </div>
-        `);
+           if(element.name == null  && element.url == null ){
+            $('.images-containers').remove();
+           }else{
+               $(`.grid-container-${$count}`).append(`
+                  <div class="grid-item"><div class="dz-preview dz-processing dz-image-preview dz-complete image_div">  
+                      <div class="dz-image">
+                          <img data-dz-thumbnail="" alt="" src="${element.url}" style="width: 130px;">
+                      </div>  
+                      <a class="dz-remove" href="" data-action="remove_image" data-id=${element.name}>Remove file</a>
+                  </div>
+              `);
+           }
         });
  
      });

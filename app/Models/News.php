@@ -15,18 +15,18 @@ class News extends Model{
         return $this->belongsTo(User::class, 'created_by');
     }
     public function getImageUrlAttribute($value){
-        if (!$this->image) {
-            return asset('/public/assets/images/avatars/avatar6.png');
-        }
+        // if (!$this->image) {
+        //     return asset('/public/assets/images/avatars/avatar6.png');
+        // }
         if (stripos($this->image, 'http') ===  0) {
             return $this->image;
         }
         return asset('storage/' . $this->image);
     }
     public function getUserImageUrlAttribute($value){
-        if (!$this->user_image) {
-            return asset('/public/assets/images/avatars/avatar6.png');
-        }
+        // if (!$this->user_image) {
+        //     return asset('/public/assets/images/avatars/avatar6.png');
+        // }
         if (stripos($this->user_image, 'http') ===  0) {
             return $this->user_image;
         }
