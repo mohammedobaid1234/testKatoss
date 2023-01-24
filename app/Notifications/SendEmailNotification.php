@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notification;
 class SendEmailNotification extends Notification
 {
     use Queueable;
-
     /**
      * Create a new notification instance.
      *
@@ -18,7 +17,6 @@ class SendEmailNotification extends Notification
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -41,11 +39,18 @@ class SendEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->line('TEST Mohammed Obaid')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
 
+    public function toDatabase($notifiable)
+    {
+        return [ 
+            'name' => 'test'
+        ];
+    }
     /**
      * Get the array representation of the notification.
      *

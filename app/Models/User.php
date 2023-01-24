@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;    
-
 class User extends Authenticatable{
     use HasFactory, Notifiable;
     
@@ -17,7 +17,7 @@ class User extends Authenticatable{
         'date_of_birth' => 'datetime',
     ];
     protected $hidden = ['password'];
-    
+    protected $guarded = []; 
     public function getImageUrlAttribute($value){
         if (!$this->image) {
             return asset('assets/images/avatars/avatar6.png');

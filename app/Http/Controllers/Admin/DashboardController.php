@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendMailJob;
 use App\Models\News;
 use App\Models\Service;
+use App\Models\User;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class DashboardController extends Controller{
     public function __construct(){
@@ -27,7 +31,9 @@ class DashboardController extends Controller{
         ]);
     }
     public function sendEmails(Request $request){
-        SendMailJob::dispatch()->onQueue('mail');
+       
+        SendMailJob::dispatch()->onQueue('default');
+      
         return redirect()->back()->with('Done!');
     }
 

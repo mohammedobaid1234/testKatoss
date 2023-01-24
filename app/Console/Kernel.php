@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
             '--stop-when-empty' => null,
         ])->everyMinute();
 
-        $schedule->job((new SendMailJob()), 'mail');
+        // $schedule->job((new SendMailJob()))->everyMinute();
     }
 
     /**

@@ -4,4 +4,8 @@ You can Use SQL file to get database
 user name : admin@admin.com 
 password: 12345678
 
+
+For First Task I solve it You can make send Message By Email To All Users Without Problems and in Background (Multi Thread) but you need to run
+php artisan queue:work --timeout=60
+
 created by: Mohammed Ahmed Obaid | mhmd.obaid.18@gmail.com  | 00972594034429

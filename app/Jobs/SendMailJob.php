@@ -34,11 +34,16 @@ class SendMailJob implements ShouldQueue
      * @return void
      */
     public function handle(){
-        DB::table('users')->orderBy('id')->chunk(100, function ($users) {
-            foreach ($users as $user) {
-                $user->notify(new SendEmailNotification);
-            }
-        });
+        // DB::table('users')->orderBy('id')
+        // ->chunk(100, function ($users) {
+        //     foreach ($users as $user) {
+        //         $user->notify(new SendEmailNotification);
+        //     }
+        // });
         
+        $users = User::chunk(100, function ($users) {
+            Notification::send($users, new SendEmailNotification);
+            
+        });
     }
 }
