@@ -17,9 +17,7 @@ class User extends Authenticatable{
         'date_of_birth' => 'datetime',
     ];
     protected $hidden = ['password'];
-    public function products(){
-        return $this->hasMany(Product::class);
-    }
+    
     public function getImageUrlAttribute($value){
         if (!$this->image) {
             return asset('assets/images/avatars/avatar6.png');

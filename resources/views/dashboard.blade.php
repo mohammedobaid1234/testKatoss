@@ -69,5 +69,14 @@
         </div>
        
     </div>
+    <form action="{{route('sendEmails')}}" method="POST">
+        @csrf
+        <div class="form-group" >
+            <label for="exampleFormControlTextarea1">Send Emails For All Users</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message" ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
 </div>
+
 @endsection

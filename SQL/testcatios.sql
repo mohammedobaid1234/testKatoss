@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2023 at 12:30 AM
+-- Generation Time: Jan 24, 2023 at 01:29 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.23
 
@@ -91,6 +91,29 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `queue`, `payload`, `attempts`, `reserved_at`, `available_at`, `created_at`) VALUES
+(13, 'mail', '{\"uuid\":\"953cc9f5-4fbc-46e0-8632-532afda56495\",\"displayName\":\"App\\\\Jobs\\\\SendMailJob\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"App\\\\Jobs\\\\SendMailJob\",\"command\":\"O:20:\\\"App\\\\Jobs\\\\SendMailJob\\\":10:{s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";s:4:\\\"mail\\\";s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1674520157, 1674520157);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -113,7 +136,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2023_01_22_210013_create_sections_table', 3),
 (17, '2023_01_22_210056_create_services_table', 3),
 (18, '2023_01_22_210157_create_news_table', 3),
-(19, '2023_01_22_210304_create_contact_us_table', 3);
+(19, '2023_01_22_210304_create_contact_us_table', 3),
+(21, '2023_01_24_000321_create_jobs_table', 4);
 
 -- --------------------------------------------------------
 
@@ -261,6 +285,22 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Prof. Kade Bosco', 'judah.homenick@example.net', '2023-01-23 22:09:55', '$2y$10$K3X2OJl/z8jC8WGYnpvocOOrVMGrAl6WYbRj8HOPJb4vRU8wkotVK', 'RDEQaLiF0o', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(2, 'Prof. Enos Thiel MD', 'friesen.daija@example.com', '2023-01-23 22:09:55', '$2y$10$oxoqD7kMuC/xk246UcAf1Ol5.BnTy88bFHsWdFNo8zclNtbtxke9W', 'KtLNySj5uX', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(3, 'Kenton Mraz', 'zbuckridge@example.org', '2023-01-23 22:09:55', '$2y$10$uaRJgigRAGqjttYRpDVk6O0Vu0XtkZs4OJT/oNVMY65y8pXKDHKtK', 's4jm5Ave7T', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(4, 'Garett Parker', 'virginie.sanford@example.com', '2023-01-23 22:09:55', '$2y$10$3oKL0ZB/aneWoH0/7EWUf.jmHL.Fee1TNBwpb5dAToOfQMRacjSc6', 'M594XM5eRJ', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(5, 'Ms. Teagan Boyer Sr.', 'ngreenholt@example.net', '2023-01-23 22:09:55', '$2y$10$98z1d3qB/vAZa//gdsl86OtZfjXyDOm9q5dkAE/45JTlE4IYVkRYu', 'jdwtvnWfNv', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(6, 'Lowell Wiegand', 'evans26@example.com', '2023-01-23 22:09:55', '$2y$10$/J.KEneAjMiLI1RB1oi3KeuyFsYT4OfTROupan59hF0IafE4g8/Se', 'XJRm1uLcId', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(7, 'Alison Rodriguez', 'rrunte@example.org', '2023-01-23 22:09:55', '$2y$10$0Vl6y/PXhtouo2OtfSb7y.SipoJE.fNMjYUe2o8Xyxgc0E9TjY27y', '9PpOLXKZoc', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(8, 'Eleanora Graham II', 'maryam10@example.org', '2023-01-23 22:09:56', '$2y$10$VbshRgUGZnosT1jS1eO8/OVw6uZZD.dE/LPbakzq7eTwoR0sEJJdy', 'Vko7TcbzBd', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(9, 'Wilford Sipes', 'thelma39@example.net', '2023-01-23 22:09:56', '$2y$10$FCK5j4iP9sdDm4P6Pa7sbOBAgbN1jsUmnabJK6xgxYenNJVw/ujbi', 'gtul2Z7AYl', '2023-01-23 22:09:56', '2023-01-23 22:09:56'),
+(10, 'Mr. Reese Jones', 'alejandrin.hills@example.com', '2023-01-23 22:09:56', '$2y$10$SDwjrGJhArVqDXDM./maLekZqU6I9zO5OVRnGcZrNnbOGuzP3Iely', 'e9ijrkayNo', '2023-01-23 22:09:56', '2023-01-23 22:09:56');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -283,6 +323,13 @@ ALTER TABLE `contact_us`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
 
 --
 -- Indexes for table `migrations`
@@ -353,10 +400,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -386,7 +439,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

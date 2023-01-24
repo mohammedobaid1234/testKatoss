@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMailJob;
 use App\Models\News;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -25,4 +26,10 @@ class DashboardController extends Controller{
             'numberOFServices' => Service::count(),
         ]);
     }
+    public function sendEmails(Request $request){
+        SendMailJob::dispatch()->onQueue('mail');
+        return redirect()->back()->with('Done!');
+    }
+
+
 }

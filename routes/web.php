@@ -3,9 +3,6 @@
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\Admin\ReportsController;
-use App\Http\Controllers\Admin\ReportTypesController;
 use App\Http\Controllers\Admin\SectionsController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -26,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontController::class,'index']);
 Route::group(['middleware' => ['auth:admin'],'prefix' => 'admin', ], function(){
     Route::get('/dashboard', [DashboardController::class, 'manage'])->name('dashboard');
+    Route::post('/sendEmails', [DashboardController::class, 'sendEmails'])->name('sendEmails');
    
     Route::prefix('contact_us')->as('contact_us.')->group(function() {
         Route::get('/manage', [ContactUsController::class, 'manage'])->name('manage');
