@@ -29,7 +29,7 @@
         <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
             <!--begin::Menu Nav-->
             <ul class="menu-nav">
-                {{-- <li class="menu-item  @if(isset($data['activePage']['dashboard'])) menu-item-active   @endif" aria-haspopup="true">
+                <li class="menu-item  @if(isset($data['activePage']['dashboard'])) menu-item-active   @endif" aria-haspopup="true">
                     <a href="{{route('dashboard')}}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -44,8 +44,9 @@
                         </span>
                         <span class="menu-text dashbord" >Dashboard</span>
                     </a>
-                </li> --}}
+                </li>
 
+                
                 
                 <li class="menu-item  @if(isset($data['activePage']['contact_us'])) menu-item-active   @endif" aria-haspopup="true">
                         <a href="{{route('contact_us.manage')}}" class="menu-link">
